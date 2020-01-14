@@ -134,55 +134,46 @@ function RepositoryDiv(props){
                     <input type="text" onChange={(e)=>{setSearchKeyword(e.target.value)}} value={searchKeyword} name="filter_search" id="filter_search" placeholder="Find a repository..." />
                 </div>
                 <div className="filter_div_item" style={{display:"grid", gridTemplateColumns:"1fr 1fr", gridGap:"7px"}}>
-                    {/* <select name="filter_type" className='filter_btn'>
-                        <option value="all">Type: All</option>
-                        <option value="sources">Sources</option>
-                        <option value="forks">Forks</option>
-                        <option value="archived">Archived</option>
-                        <option value="mirrors">Mirrors</option>
-                    </select>
-                    <select name="filter_language" className='filter_btn' onChange={(e)=>{setLanguage(e.target.value)}}>
-                        <option value="">Language: All</option>
-                        <option value="html">HTML</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="css">CSS</option>
-                    </select> */}
                     <div>
                         <details id="type_options">
-                            <summary class="summary_btn" >
+                            <summary class="summary_btn" aria-haspopup="menu" role="button">
                                 <font style={{fontSize:"14px", fontWeight:"100"}}>Type:</font>
                                 <span id="type_value">
                                 &nbsp;&nbsp;All
                                 </span>
-                                <span class="drop_caret"></span>
+                                <span class="caret"></span>
                             </summary>
 
                             <details-menu class="menu_div">
-                                <div class="menu_modal_div">
+                                <div class="menu_modal">
                                     <header class="menu_header">
-                                        <span class="header_title">Select type</span>
+                                        <span class="menu_title">Select type</span>
                                     </header>
                                     <div class="menu_list">
-                                        <div class="list_item">
+                                        <label class="list_item" aria-checked="true" tabindex="0">
                                             <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;All";document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
+                                            
                                             <span class="text-normal" data-menu-button-text="">All</span>
-                                        </div>
-                                        <div class="list_item">
+                                        </label>
+                                        <label class="list_item"  >
                                             <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_source" value="source" hidden="hidden" data-autosubmit="true"/>
+                                            
                                             <span class="text-normal" data-menu-button-text="">Sources</span>
-                                        </div>
-                                        <div class="list_item">
+                                        </label>
+                                        <label class="list_item"  >
                                             <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_fork" value="fork" hidden="hidden" data-autosubmit="true"/>
+                                            
                                             <span class="text-normal" data-menu-button-text="">Forks</span>
-                                        </div>
-                                        <div class="list_item">
+                                        </label>
+                                        <label class="list_item"  >
                                             <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_archived" value="archived" hidden="hidden" data-autosubmit="true"/>
+                                            
                                             <span class="text-normal" data-menu-button-text="">Archived</span>
-                                        </div>
-                                        <div class="list_item">
+                                        </label>
+                                        <label class="list_item"  >
                                             <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_mirror" value="mirror" hidden="hidden" data-autosubmit="true"/>
                                             <span class="text-normal" data-menu-button-text="">Mirrors</span>
-                                        </div>
+                                        </label>
                                     </div>
                                 </div>
                             </details-menu>
@@ -191,36 +182,36 @@ function RepositoryDiv(props){
                     {/* Language details */}
                     <div>
                         <details id="language_options">
-                            <summary class="summary_btn">
+                            <summary class="summary_btn" aria-haspopup="menu" role="button">
                             <font style={{fontSize:"14px", fontWeight:"100"}}>Language:</font>
-                            <span id="language_value">
+                            <span data-menu-button="" id="language_value">
                                 &nbsp;&nbsp;{language!=""?language:"All"}
                             </span>
-                            <span class="drop_caret"></span>
+                            <span class="caret"></span>
                             </summary>
 
-                            <details-menu class="menu_div">
-                            <div class="menu_modal_div">
+                            <details-menu class="menu_div" role="menu">
+                            <div class="menu_modal">
                                 <header class="menu_header">
-                                <span class="SelectMenu-title" >Select language</span>
+                                    <span class="menu_title" >Select language</span>
                                 </header>
                                 <div class="menu_list">
-                                    <div class="list_item">
-                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage("")}} name="language" id="language_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
-                                        <span class="text-normal" data-menu-button-text="">All</span>
-                                    </div>
-                                    <div  class="list_item">
-                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_html" value="html" hidden="hidden" data-autosubmit="true"/>
-                                        <span class="text-normal" data-menu-button-text="">HTML</span>
-                                    </div>
-                                    <div  class="list_item">
-                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_javascript" value="javascript" hidden="hidden" data-autosubmit="true"/>
-                                        <span class="text-normal" data-menu-button-text="">JavaScript</span>
-                                    </div>
-                                    <div class="list_item">
-                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_css" value="css" hidden="hidden" data-autosubmit="true"/>
-                                        <span class="text-normal" data-menu-button-text="">CSS</span>
-                                    </div>
+                                <label class="list_item"  aria-checked="true" tabindex="0">
+                                    <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage("")}} name="language" id="language_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
+                                    <span class="text-normal" data-menu-button-text="">All</span>
+                                </label>
+                                <label class="list_item"  >
+                                    <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_html" value="html" hidden="hidden" data-autosubmit="true"/>
+                                    <span class="text-normal" data-menu-button-text="">HTML</span>
+                                </label>
+                                <label class="list_item"  >
+                                    <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_javascript" value="javascript" hidden="hidden" data-autosubmit="true"/>
+                                    <span class="text-normal" data-menu-button-text="">JavaScript</span>
+                                </label>
+                                <label class="list_item"  >
+                                    <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_css" value="css" hidden="hidden" data-autosubmit="true"/>
+                                    <span class="text-normal" data-menu-button-text="">CSS</span>
+                                </label>
                                 </div>
                             </div>
                             </details-menu>

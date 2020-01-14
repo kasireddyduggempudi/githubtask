@@ -484,7 +484,7 @@ details summary::-webkit-details-marker {
   display:none;
 }
 
-.drop_caret {
+.caret {
   display: inline-block;
   width: 0;
   height: 0;
@@ -512,7 +512,7 @@ details summary::-webkit-details-marker {
 } */
 
 
-  .menu_div{
+  .menu_div {
     position: absolute;
     top: auto;
     right: auto;
@@ -523,7 +523,7 @@ details summary::-webkit-details-marker {
 }
 
 
-.menu_modal_div {
+.menu_modal {
   position: relative;
   z-index: 99;
   display: flex;
@@ -539,7 +539,7 @@ details summary::-webkit-details-marker {
 }
 
 @media (min-width: 544px){
-  .menu_modal_div{
+  .menu_modal{
     position: relative;
     z-index: 99;
     height: auto;
@@ -557,7 +557,7 @@ details summary::-webkit-details-marker {
 }
 
 
-.menu_header{
+.menu_header {
   display: flex;
   flex: none;
   padding: 16px;
@@ -570,14 +570,14 @@ details summary::-webkit-details-marker {
 }
 }
 
-.header_title{
+.menu_title {
   flex: auto;
   font-size: 14px;
   font-weight: 600;
 }
 
 @media (min-width: 544px){
-  .header_title {
+  .menu_title {
     font-size: inherit;
 }
 }
@@ -592,7 +592,7 @@ details summary::-webkit-details-marker {
 }
 }
 
-.menu_list{
+.menu_list {
   position: relative;
   padding: 0;
   margin: 0 0 -1px;
@@ -606,7 +606,7 @@ details summary::-webkit-details-marker {
 
 
 
-.list_item{
+.list_item {
   display: flex;
   align-items: center;
   width: 100%;
@@ -621,14 +621,10 @@ details summary::-webkit-details-marker {
 }
 
 @media (min-width: 544px){
-  .list_item{
+  .list_item {
     padding-top: 8px;
     padding-bottom: 8px;
 }
 }
 
 
-.list_item[aria-checked=true] {
-  font-weight: 500;
-  color: #24292e;
-}
