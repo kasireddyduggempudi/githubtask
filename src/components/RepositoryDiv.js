@@ -148,47 +148,41 @@ function RepositoryDiv(props){
                         <option value="css">CSS</option>
                     </select> */}
                     <div>
-                        <details class="details-reset details-overlay position-relative mr-2" id="type-options">
-                            <summary class="btn" aria-haspopup="menu" role="button">
+                        <details id="type_options">
+                            <summary class="summary_btn" >
                                 <font style={{fontSize:"14px", fontWeight:"100"}}>Type:</font>
-                                <span data-menu-button="" id="type_value">
+                                <span id="type_value">
                                 &nbsp;&nbsp;All
                                 </span>
-                                <span class="dropdown-caret"></span>
+                                <span class="drop_caret"></span>
                             </summary>
 
-                            <details-menu class="SelectMenu right-md-0">
-                                <div class="SelectMenu-modal">
-                                    <header class="SelectMenu-header">
-                                        <span class="SelectMenu-title">Select type</span>
-                                        <button class="SelectMenu-closeButton" type="button" data-toggle-for="type-options"><svg aria-label="Close menu" class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path  d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg></button>
+                            <details-menu class="menu_div">
+                                <div class="menu_modal_div">
+                                    <header class="menu_header">
+                                        <span class="header_title">Select type</span>
                                     </header>
-                                    <div class="SelectMenu-list">
-                                        <label class="SelectMenu-item" role="menuitemradio" aria-checked="true" tabindex="0">
-                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;All";document.getElementById("type-options").removeAttribute("open")}} name="type" id="type_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
-                                            <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                                    <div class="menu_list">
+                                        <div class="list_item">
+                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;All";document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
                                             <span class="text-normal" data-menu-button-text="">All</span>
-                                        </label>
-                                        <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type-options").removeAttribute("open")}} name="type" id="type_source" value="source" hidden="hidden" data-autosubmit="true"/>
-                                            <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                                        </div>
+                                        <div class="list_item">
+                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_source" value="source" hidden="hidden" data-autosubmit="true"/>
                                             <span class="text-normal" data-menu-button-text="">Sources</span>
-                                        </label>
-                                        <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type-options").removeAttribute("open")}} name="type" id="type_fork" value="fork" hidden="hidden" data-autosubmit="true"/>
-                                            <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                                        </div>
+                                        <div class="list_item">
+                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_fork" value="fork" hidden="hidden" data-autosubmit="true"/>
                                             <span class="text-normal" data-menu-button-text="">Forks</span>
-                                        </label>
-                                        <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type-options").removeAttribute("open")}} name="type" id="type_archived" value="archived" hidden="hidden" data-autosubmit="true"/>
-                                            <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                                        </div>
+                                        <div class="list_item">
+                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_archived" value="archived" hidden="hidden" data-autosubmit="true"/>
                                             <span class="text-normal" data-menu-button-text="">Archived</span>
-                                        </label>
-                                        <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type-options").removeAttribute("open")}} name="type" id="type_mirror" value="mirror" hidden="hidden" data-autosubmit="true"/>
-                                            <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                                        </div>
+                                        <div class="list_item">
+                                            <input type="radio" onChange={(e)=>{document.getElementById("type_value").innerHTML="&nbsp;&nbsp;"+e.target.value;document.getElementById("type_options").removeAttribute("open")}} name="type" id="type_mirror" value="mirror" hidden="hidden" data-autosubmit="true"/>
                                             <span class="text-normal" data-menu-button-text="">Mirrors</span>
-                                        </label>
+                                        </div>
                                     </div>
                                 </div>
                             </details-menu>
@@ -196,42 +190,37 @@ function RepositoryDiv(props){
                     </div>
                     {/* Language details */}
                     <div>
-                        <details class="details-reset details-overlay position-relative flex-auto" id="language-options">
-                            <summary class="btn" aria-haspopup="menu" role="button">
+                        <details id="language_options">
+                            <summary class="summary_btn">
                             <font style={{fontSize:"14px", fontWeight:"100"}}>Language:</font>
-                            <span data-menu-button="" id="language_value">
+                            <span id="language_value">
                                 &nbsp;&nbsp;{language!=""?language:"All"}
                             </span>
-                            <span class="dropdown-caret"></span>
+                            <span class="drop_caret"></span>
                             </summary>
 
-                            <details-menu class="SelectMenu right-md-0" role="menu">
-                            <div class="SelectMenu-modal">
-                                <header class="SelectMenu-header">
+                            <details-menu class="menu_div">
+                            <div class="menu_modal_div">
+                                <header class="menu_header">
                                 <span class="SelectMenu-title" >Select language</span>
-                                <button class="SelectMenu-closeButton" type="button" data-toggle-for="language-options"><svg aria-label="Close menu" class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg></button>
                                 </header>
-                                <div class="SelectMenu-list">
-                                <label class="SelectMenu-item" role="menuitemradio" aria-checked="true" tabindex="0">
-                                    <input type="radio" onChange={(e)=>{document.getElementById("language-options").removeAttribute("open");setLanguage("")}} name="language" id="language_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
-                                    <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
-                                    <span class="text-normal" data-menu-button-text="">All</span>
-                                </label>
-                                    <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                    <input type="radio" onChange={(e)=>{document.getElementById("language-options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_html" value="html" hidden="hidden" data-autosubmit="true"/>
-                                    <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
-                                    <span class="text-normal" data-menu-button-text="">HTML</span>
-                                    </label>
-                                    <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                    <input type="radio" onChange={(e)=>{document.getElementById("language-options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_javascript" value="javascript" hidden="hidden" data-autosubmit="true"/>
-                                    <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path  d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
-                                    <span class="text-normal" data-menu-button-text="">JavaScript</span>
-                                    </label>
-                                    <label class="SelectMenu-item" role="menuitemradio" aria-checked="false" tabindex="0">
-                                    <input type="radio" onChange={(e)=>{document.getElementById("language-options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_css" value="css" hidden="hidden" data-autosubmit="true"/>
-                                    <svg class="octicon octicon-check SelectMenu-icon SelectMenu-icon--check" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
-                                    <span class="text-normal" data-menu-button-text="">CSS</span>
-                                    </label>
+                                <div class="menu_list">
+                                    <div class="list_item">
+                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage("")}} name="language" id="language_" value="" hidden="hidden" data-autosubmit="true" checked="checked"/>
+                                        <span class="text-normal" data-menu-button-text="">All</span>
+                                    </div>
+                                    <div  class="list_item">
+                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_html" value="html" hidden="hidden" data-autosubmit="true"/>
+                                        <span class="text-normal" data-menu-button-text="">HTML</span>
+                                    </div>
+                                    <div  class="list_item">
+                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_javascript" value="javascript" hidden="hidden" data-autosubmit="true"/>
+                                        <span class="text-normal" data-menu-button-text="">JavaScript</span>
+                                    </div>
+                                    <div class="list_item">
+                                        <input type="radio" onChange={(e)=>{document.getElementById("language_options").removeAttribute("open");setLanguage(e.target.value)}} name="language" id="language_css" value="css" hidden="hidden" data-autosubmit="true"/>
+                                        <span class="text-normal" data-menu-button-text="">CSS</span>
+                                    </div>
                                 </div>
                             </div>
                             </details-menu>

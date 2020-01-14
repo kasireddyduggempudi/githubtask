@@ -3,6 +3,9 @@
   padding:0px!important;
 }
 
+body{
+  overflow-x: hidden;
+}
 #main_symbol{
   cursor: pointer;
 }
@@ -192,8 +195,8 @@
 #tabs_div{
   border-bottom: 1px solid #d1d5da;
   margin-right: 3%;
-  position: sticky;
-  top:0px;
+  position: sticky!important;
+  top:0px!important;
   background-color: white;
 }
 #tabs_nav{
@@ -450,7 +453,7 @@ a:hover:not(.tab-item){
 
 
 /* for filter css */
-.btn{
+.summary_btn{
 
   color: #24292e;
   background-color: #eff3f6;
@@ -481,7 +484,7 @@ details summary::-webkit-details-marker {
   display:none;
 }
 
-.dropdown-caret {
+.drop_caret {
   display: inline-block;
   width: 0;
   height: 0;
@@ -495,32 +498,32 @@ details summary::-webkit-details-marker {
 }
 
 
-.SelectMenu {
-  position: fixed;
+/* .SelectMnu {
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 99;
+  z-index: -1;
   display: flex;
   padding: 16px;
   pointer-events: none;
   flex-direction: column;
-}
+} */
 
-@media (min-width: 544px)
-{
-  .SelectMenu {
+
+  .menu_div{
     position: absolute;
     top: auto;
     right: auto;
     bottom: auto;
     left: auto;
     padding: 0;
-}
+    z-index: 99;
 }
 
-.SelectMenu-modal {
+
+.menu_modal_div {
   position: relative;
   z-index: 99;
   display: flex;
@@ -532,60 +535,55 @@ details summary::-webkit-details-marker {
   background-color: #f6f8fa;
   border-radius: 6px;
   box-shadow: 0 0 18px rgba(0,0,0,.4);
-  animation: SelectMenu-modal-animation .12s cubic-bezier(0,.1,.1,1) backwards;
-  animation-duration: 0.12s;
-  animation-timing-function: cubic-bezier(0, 0.1, 0.1, 1);
-  animation-delay: 0s;
-  animation-iteration-count: 1;
-  animation-direction: normal;
-  animation-fill-mode: backwards;
-  animation-play-state: running;
-  animation-name: SelectMenu-modal-animation;
+
 }
 
 @media (min-width: 544px){
-  .SelectMenu-modal {
+  .menu_modal_div{
+    position: relative;
+    z-index: 99;
     height: auto;
+    max-height: 66%;
     max-height: 480px;
     margin: 4px 10px 16px;
     font-size: 12px;
     border: 1px solid #d1d5da;
     border-radius: 3px;
     box-shadow: 0 1px 5px rgba(27,31,35,.15);
+    margin-left:-67%;
+    max-width: 300px;
+    width:300px;
 }
 }
 
-.SelectMenu-header {
+
+.menu_header{
   display: flex;
   flex: none;
   padding: 16px;
 }
 
 @media (min-width: 544px){
-  .SelectMenu-header {
+  .menu_header {
     padding-top: 8px;
     padding-bottom: 8px;
 }
 }
 
-.SelectMenu-title {
+.header_title{
   flex: auto;
   font-size: 14px;
   font-weight: 600;
 }
 
 @media (min-width: 544px){
-  .SelectMenu-title {
+  .header_title {
     font-size: inherit;
 }
 }
 
 .SelectMenu-closeButton {
-  padding: 16px;
-  margin: -16px;
-  color: #6a737d;
-  background-color: initial;
-  border: 0;
+  display: none;
 }
 
 @media (min-width: 544px){
@@ -594,7 +592,7 @@ details summary::-webkit-details-marker {
 }
 }
 
-.SelectMenu-list {
+.menu_list{
   position: relative;
   padding: 0;
   margin: 0 0 -1px;
@@ -608,7 +606,7 @@ details summary::-webkit-details-marker {
 
 
 
-.SelectMenu-item {
+.list_item{
   display: flex;
   align-items: center;
   width: 100%;
@@ -623,38 +621,14 @@ details summary::-webkit-details-marker {
 }
 
 @media (min-width: 544px){
-  .SelectMenu-item {
+  .list_item{
     padding-top: 8px;
     padding-bottom: 8px;
 }
 }
 
 
-.SelectMenu-item[aria-checked=true] {
+.list_item[aria-checked=true] {
   font-weight: 500;
   color: #24292e;
-}
-
-.SelectMenu-item[aria-checked=true] .SelectMenu-icon--check {
-  visibility: hidden;
-  transition: transform .12s cubic-bezier(0,0,.2,1),visibility 0s linear;
-  transform: scale(1);
-}
-
-.SelectMenu-icon--check {
-  visibility: hidden;
-  transition: transform .12s cubic-bezier(.5,.1,1,.5),visibility 0s linear .12s;
-  transform: scale(0);
-}
-
-.SelectMenu-icon {
-  width: 16px;
-  margin-right: 8px;
-  flex-shrink: 0;
-}
-
-.octicon {
-  display: inline-block;
-  vertical-align: text-top;
-  fill: currentColor;
 }
