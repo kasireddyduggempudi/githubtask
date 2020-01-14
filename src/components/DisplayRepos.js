@@ -11,13 +11,13 @@ function DisplayRepos(props){
                     <div>
                         <div className="repo_name_div">
                             <h3><a href="">{props.repoInfo.name}</a></h3>
-                            <p>{props.repoInfo.description}</p>
+                            <p style={{color:"#586069", fontSize:"14px"}}>{props.repoInfo.description}</p>
                         </div>
                         <div></div>
                         <div className="repo_description_div">
                             {
                                 (props.repoInfo.language)?(<span className="repo_description_div_item">
-                                <span className="dot_color" style={{height:"12px", width:"12px", borderRadius:"50%", display:"inline-block", position:"relative", top:"1px"}}></span> {props.repoInfo.language}
+                                <span className="dot_color" style={{height:"12px", width:"12px", borderRadius:"50%", display:"inline-block", top:"1px"}}></span> {props.repoInfo.language}
                             </span> ):null
                             }
                            
@@ -28,7 +28,9 @@ function DisplayRepos(props){
                     </div>
                     <div className="star_display_div">
                         <div style={{marginTop:"10px"}}>
-                            <button className="star_btn">* Star</button>
+                            <button className="star_btn">
+                            <svg viewBox="0 0 14 16" style={{verticalAlign:"text-top"}} width="14" height="16" aria-hidden="true"><path d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></svg>
+                            &nbsp;Star</button>
                         </div>
                         
                         <div style={{marginTop:"25px"}}> 

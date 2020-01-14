@@ -78,20 +78,19 @@
 
 
 /* SIDE PANEL CSS CODE STARTS HERE */
-#image{
-  border-radius: 6px;
-}
 
 #main_body{
   margin-top:24px;
   padding-right: 16px;
   margin-left:16px;
-  display:flex;
+  display:grid;
+  grid-template-columns: 3fr 8fr;
   grid-column-gap: 0px;
 }
 
 #side_panel{
-  padding-right:40px;
+  padding-right:0px;
+  margin-right: 40px;
 }
 
 #image_and_name_div{
@@ -110,6 +109,7 @@
   height: 100% !important;
   max-width: 260px!important;
   max-height: 260px!important;
+  border-radius: 6px;
 }
 
 #name{
@@ -184,9 +184,17 @@
 
 /* BEGIN: Repository Div CSS Code STARTS Here */
 
+#repository_div{
+  position: relative;
+  width: 100%;
+}
+
 #tabs_div{
   border-bottom: 1px solid #d1d5da;
   margin-right: 3%;
+  position: sticky;
+  top:0px;
+  background-color: white;
 }
 #tabs_nav{
   display: flex;
@@ -247,6 +255,10 @@
   box-sizing: border-box;
   background-color: #eff3f6;
   border-radius: .25em;
+}
+
+datalist{
+  background-color:red;
 }
 
 
@@ -320,27 +332,33 @@
   margin-bottom: 8px;
   width:100%;
   display: block;
-  background-color: #eff3f6;
-  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+  /* background-color: #eff3f6;
+  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%); */
   color: #24292e;
   padding:6px 12px;
   font-size: 14px;
-  font-weight: 600;
+  
   line-height: 20px;
   white-space: nowrap;
   cursor: pointer;
-  border:1px solid rgba(27,31,35,.2);
-  border-radius: .25em;
+  /* border:1px solid rgba(27,31,35,.2);
+  border-radius: .25em; */
   font-family: inherit;
   right: 0px;
   width: 100px;
   text-align: center;
   float:right;
 }
-
-a{
+#clear_btn:hover{
   text-decoration: none;
-  color:blue;
+}
+
+a:not(.tab-item){
+  text-decoration: none;
+  color: #0366d6;
+}
+a:hover:not(.tab-item){
+  text-decoration: underline;
 }
 /* END: Repository Dipslya Div CSS Code ENDS Here */
 
@@ -382,6 +400,8 @@ a{
     position: absolute;
     margin-left:43%;
   }
+
+  
 }
 /* ENDS: Responsive CSS Code for navbar */
 
@@ -389,13 +409,14 @@ a{
 
 @media only screen and (max-width:900px){
   #main_body{
-    flex-direction: column;
+    display: block;
   }
   #image_and_name_div{
     flex-direction: row;
   }
   #name_div{
     width: 100%;
+    
   }
   #image_div{
     margin-right:10px;
@@ -415,8 +436,225 @@ a{
    .clear_div{
      padding-bottom: 10px;
    }
+
+   #repository_div{
+     position: relative;
+   }
 }
 
 /* ENDS: Responsive CSS Code for side div and repository div */
 /* END: Responsive CSS COde ends here */
 
+
+
+
+
+/* for filter css */
+.btn{
+
+  color: #24292e;
+  background-color: #eff3f6;
+  background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-repeat: repeat-x;
+  background-position: -1px -1px;
+  background-size: 110% 110%;
+  border: 1px solid rgba(27,31,35,.2);
+  border-radius: .25em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+
+.dropdown-caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  content: "";
+  border-top-style: solid;
+  border-top-width: 4px;
+  border-right: 4px solid transparent;
+  border-bottom: 0 solid transparent;
+  border-left: 4px solid transparent;
+}
+
+
+.SelectMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  padding: 16px;
+  pointer-events: none;
+  flex-direction: column;
+}
+
+@media (min-width: 544px)
+{
+  .SelectMenu {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    padding: 0;
+}
+}
+
+.SelectMenu-modal {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  max-height: 66%;
+  margin: auto 0;
+  overflow: hidden;
+  pointer-events: auto;
+  flex-direction: column;
+  background-color: #f6f8fa;
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(0,0,0,.4);
+  animation: SelectMenu-modal-animation .12s cubic-bezier(0,.1,.1,1) backwards;
+  animation-duration: 0.12s;
+  animation-timing-function: cubic-bezier(0, 0.1, 0.1, 1);
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: backwards;
+  animation-play-state: running;
+  animation-name: SelectMenu-modal-animation;
+}
+
+@media (min-width: 544px){
+  .SelectMenu-modal {
+    height: auto;
+    max-height: 480px;
+    margin: 4px 10px 16px;
+    font-size: 12px;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-shadow: 0 1px 5px rgba(27,31,35,.15);
+}
+}
+
+.SelectMenu-header {
+  display: flex;
+  flex: none;
+  padding: 16px;
+}
+
+@media (min-width: 544px){
+  .SelectMenu-header {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+}
+
+.SelectMenu-title {
+  flex: auto;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (min-width: 544px){
+  .SelectMenu-title {
+    font-size: inherit;
+}
+}
+
+.SelectMenu-closeButton {
+  padding: 16px;
+  margin: -16px;
+  color: #6a737d;
+  background-color: initial;
+  border: 0;
+}
+
+@media (min-width: 544px){
+  .SelectMenu-closeButton {
+    display: none;
+}
+}
+
+.SelectMenu-list {
+  position: relative;
+  padding: 0;
+  margin: 0 0 -1px;
+  flex: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  border-top: 1px solid #e1e4e8;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+.SelectMenu-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+  overflow: hidden;
+  color: #586069;
+  text-align: left;
+  cursor: pointer;
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid #eaecef;
+}
+
+@media (min-width: 544px){
+  .SelectMenu-item {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+}
+
+
+.SelectMenu-item[aria-checked=true] {
+  font-weight: 500;
+  color: #24292e;
+}
+
+.SelectMenu-item[aria-checked=true] .SelectMenu-icon--check {
+  visibility: hidden;
+  transition: transform .12s cubic-bezier(0,0,.2,1),visibility 0s linear;
+  transform: scale(1);
+}
+
+.SelectMenu-icon--check {
+  visibility: hidden;
+  transition: transform .12s cubic-bezier(.5,.1,1,.5),visibility 0s linear .12s;
+  transform: scale(0);
+}
+
+.SelectMenu-icon {
+  width: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
